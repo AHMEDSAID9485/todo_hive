@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_hive/widgets/CustomSearchIcon.dart';
 
 class CustomAppbarForbodyForNotesview extends StatelessWidget {
   const CustomAppbarForbodyForNotesview({super.key});
@@ -9,14 +10,7 @@ class CustomAppbarForbodyForNotesview extends StatelessWidget {
       children: [
         Text('Notes', style: TextStyle(color: Colors.white, fontSize: 30)),
         Spacer(),
-        Container(
-          padding: EdgeInsets.all(10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            color: Colors.white60.withOpacity(.05),
-          ),
-          child: Icon(Icons.search, size: 24),
-        ),
+        CustomSearchIcon(),
       ],
     );
   }
