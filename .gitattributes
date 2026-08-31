@@ -1,0 +1,12 @@
+# إخفاء مجلدات المنصات تماماً من حساب الإحصائيات
+android/** linguist-vendored
+ios/** linguist-vendored
+windows/** linguist-vendored
+linux/** linguist-vendored
+macos/** linguist-vendored
+web/** linguist-vendored
+
+# اعتبار أي كود غير دارت كملفات توثيق لا تدخل في النسبة
+*.cpp linguist-documentation
+*.h linguist-documentation
+*.cmake linguist-documentation
