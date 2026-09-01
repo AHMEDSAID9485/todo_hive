@@ -23,7 +23,7 @@ class CustomNoteitem extends StatelessWidget {
               Icon(Icons.delete,size: 40,color: Colors.black,)
             ],
           ),
-          Text('Build Your Craear with Ahmed Saeed',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Color(0xffCEA15E)),),
+          Text('Build Your Craear with Ahmed Saeed',maxLines: 2,overflow: TextOverflow.ellipsis,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20,color: Color(0xffCEA15E)),),
            Gap(10),
            Row(
             mainAxisAlignment: MainAxisAlignment.end,
