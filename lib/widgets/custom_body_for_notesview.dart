@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:todo_hive/widgets/Custom_noteItem.dart';
 import 'package:todo_hive/widgets/custom_appBar_forbody_for_notesview.dart';
 
 class CustomBodyForNotesview extends StatelessWidget {
@@ -12,7 +13,9 @@ class CustomBodyForNotesview extends StatelessWidget {
       child: Column(
         children: [
           Gap(35),
-          CustomAppbarForbodyForNotesview()
+          CustomAppbarForbodyForNotesview(),
+          Gap(10),
+          CustomNoteitem()
         ],
       ),
     );
