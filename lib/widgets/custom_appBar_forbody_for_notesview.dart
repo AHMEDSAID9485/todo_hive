@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_hive/core/constant/App_color.dart';
 import 'package:todo_hive/widgets/CustomSearchIcon.dart';
 
 class CustomAppbarForbodyForNotesview extends StatelessWidget {
@@ -8,7 +9,7 @@ class CustomAppbarForbodyForNotesview extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        Text('Notes', style: TextStyle(color: Colors.white, fontSize: 30)),
+        Text('Notes', style: TextStyle(color: AppColor.witecolor, fontSize: 30)),
         Spacer(),
         CustomSearchIcon(),
       ],
