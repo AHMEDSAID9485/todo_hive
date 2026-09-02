@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:todo_hive/core/constant/App_color.dart';
 import 'package:todo_hive/widgets/AddNoteBottemSheet.dart';
-import 'package:todo_hive/widgets/custom_body_for_notesview.dart';
+import 'package:todo_hive/widgets/CustomBodyForNotesview.dart';
 
 class NotesView extends StatelessWidget {
   const NotesView({super.key});

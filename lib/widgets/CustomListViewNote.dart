@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
-import 'package:todo_hive/widgets/Custom_noteItem.dart';
+import 'package:todo_hive/views/edit_note_view.dart';
+import 'package:todo_hive/widgets/Custom_Note_item.dart';
 
 class CustomListViewNote extends StatelessWidget {
   CustomListViewNote({super.key});
@@ -18,7 +19,9 @@ class CustomListViewNote extends StatelessWidget {
         separatorBuilder: (context, index) => Gap(10),
         itemBuilder: (context, index) {
           final currentcolor = index % colors.length;
-          return CustomNoteitem(color: colors[currentcolor]);
+          return CustomNoteitem(color: colors[currentcolor],onTap: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>EditNoteView()));
+          },);
         },
         itemCount: 20,
       ),
