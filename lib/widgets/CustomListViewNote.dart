@@ -16,6 +16,7 @@ class CustomListViewNote extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: ListView.separated(
+        padding: EdgeInsets.symmetric(vertical: 12),
         separatorBuilder: (context, index) => Gap(10),
         itemBuilder: (context, index) {
           final currentcolor = index % colors.length;
