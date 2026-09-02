@@ -3,14 +3,14 @@ import 'package:gap/gap.dart';
 import 'package:intl/intl.dart';
 
 class CustomNoteitem extends StatelessWidget {
-  const CustomNoteitem({super.key});
-
+  const CustomNoteitem({super.key, this.color});
+final Color? color;
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.all(25),
       decoration: BoxDecoration(
-        color: Color(0xffFFCD79),
+        color: color,
         borderRadius: BorderRadius.circular(16)
       ),
       child: Column(
