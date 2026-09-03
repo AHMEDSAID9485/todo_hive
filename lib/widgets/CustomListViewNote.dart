@@ -6,7 +6,7 @@ import 'package:todo_hive/widgets/Custom_Note_item.dart';
 class CustomListViewNote extends StatelessWidget {
   CustomListViewNote({super.key});
 
-  final List<Color> colors = [
+  final List<Color> colors = const [
     Color(0xffFFCD79),
     Color(0xffE7E895),
     Color(0xffD39DDA),
