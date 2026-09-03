@@ -5,4 +5,5 @@ class AppColor {
   static Color blackcolor = Colors.black;
   static Color witecolor = Colors.white;
   static Color thirdcolor = Color.fromARGB(255, 106, 106, 106);
+  static Color redcolor = Colors.red;
 }
