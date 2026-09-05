@@ -14,7 +14,7 @@ class CustomNoteitem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(25),
         decoration: BoxDecoration(
-          color: color,
+          color: color ?? Color(0xffFFCD79),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
