@@ -8,7 +8,7 @@ part of 'note_model.dart';
 
 class NoteModelAdapter extends TypeAdapter<NoteModel> {
   @override
-  final typeId = 0;
+  final int typeId = 0;
 
   @override
   NoteModel read(BinaryReader reader) {
@@ -20,7 +20,7 @@ class NoteModelAdapter extends TypeAdapter<NoteModel> {
       title: fields[0] as String,
       subtitle: fields[1] as String,
       date: fields[2] as String,
-      color: (fields[3] as num).toInt(),
+      color: fields[3] as int,
     );
   }
 

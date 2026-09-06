@@ -1,4 +1,6 @@
-import 'package:hive_ce/hive.dart';
+
+import 'package:hive_flutter/adapters.dart';
+
 part 'note_model.g.dart';
 @HiveType(typeId: 0)
 class NoteModel {
