@@ -10,11 +10,13 @@ class NoteBlocObserver implements BlocObserver {
 
   @override
   void onClose(BlocBase<dynamic> bloc) {
+    debugPrint('onClose -- bloc: ${bloc.runtimeType}');
     // TODO: implement onClose
   }
 
   @override
   void onCreate(BlocBase<dynamic> bloc) {
+    debugPrint('onCreate -- bloc: ${bloc.runtimeType}');
     // TODO: implement onCreate
   }
 

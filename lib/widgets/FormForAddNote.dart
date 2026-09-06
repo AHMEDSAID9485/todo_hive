@@ -39,13 +39,17 @@ class _FormForAddNoteState extends State<FormForAddNote> {
            // Handle saved value
          },),
          const Gap(20),
-          CustomBottom(title: 'ADD',onTap: () {
-            if(formKey.currentState!.validate()){
-              formKey.currentState!.save();
-              var note = NoteModel(title: title!, subtitle: subtitle!, date: DateTime.now().toString(), color: Colors.amber.value); 
-              context.read<AddNoteCubit>().addNote(note);
-            }
-          },)
+         BlocBuilder<AddNoteCubit,AddNoteState>(
+          builder: (context,state){
+            return CustomBottom(title: 'Add',onTap: (){
+              if(formKey.currentState!.validate()){
+                formKey.currentState!.save();
+                NoteModel note = NoteModel(title: title!, subtitle: subtitle!, date: DateTime.now().toString(), color: Colors.blue.value);
+                BlocProvider.of<AddNoteCubit>(context).addNote(note);
+              }
+            },isLoading: state is AddNoteLoading ? true : false,);
+          }
+          )
         ],
       ),
     );

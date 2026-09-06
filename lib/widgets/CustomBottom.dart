@@ -4,10 +4,11 @@ import 'package:todo_hive/core/constant/App_color.dart';
 
 class CustomBottom extends StatelessWidget {
   const CustomBottom({
-    super.key, required this.title, this.onTap,
+    super.key, required this.title, this.onTap, required this.isLoading,
   });
 final String title;
 final void Function()? onTap;
+final bool isLoading;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -20,10 +21,7 @@ final void Function()? onTap;
           color: AppColor.primcolor
         ),
         child: Center(
-          child: Text(title,style: TextStyle(
-            color: AppColor.blackcolor,
-            fontSize: 25
-          ),),
+          child: isLoading ? CircularProgressIndicator(color: AppColor.blackcolor,) : Text(title,style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold,color: AppColor.blackcolor),),
         ),
       ),
     );
