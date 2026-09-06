@@ -31,11 +31,11 @@ class _EditNoteViewbodyState extends State<EditNoteViewbody> {
             Navigator.pop(context);
           },),),
           Gap(15),
-          CustomTextField(hint: 'Title',onChanged: (value){
+          CustomTextField(hint: 'Edit Title',onChanged: (value){
             title = value;
           },),
           Gap(15),
-          CustomTextField(hint: 'Content',maxlines: 5, onChanged: (value){
+          CustomTextField(hint: 'Edit Content',maxlines: 5, onChanged: (value){
             subtitle = value;
           },)
         ],
