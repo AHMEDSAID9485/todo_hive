@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_hive/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:todo_hive/cubits/notes_cubit/note_cubit.dart';
 import 'package:todo_hive/widgets/FormForAddNote.dart';
 
 class AddNoteBottemSheet extends StatelessWidget {
@@ -13,6 +14,7 @@ class AddNoteBottemSheet extends StatelessWidget {
       child: BlocConsumer<AddNoteCubit, AddNoteState>(
         listener: (context, state) {
           if (state is AddNoteSuccess) {
+             context.read<NoteCubit>().fetchNotes();
             Navigator.pop(context);
           } else if (state is AddNoteFailure) {
             ScaffoldMessenger.of(context).showSnackBar(

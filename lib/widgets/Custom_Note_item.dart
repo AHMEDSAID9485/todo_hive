@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:intl/intl.dart';
 import 'package:todo_hive/core/constant/App_color.dart';
+import 'package:todo_hive/cubits/notes_cubit/note_cubit.dart';
+import 'package:todo_hive/models/note_model.dart';
 
 class CustomNoteitem extends StatelessWidget {
-  const CustomNoteitem({super.key, this.color, this.onTap});
-  final Color? color;
+  const CustomNoteitem({super.key, this.onTap, required this.noteModel});
   final void Function()? onTap;
+  final NoteModel noteModel;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -14,7 +16,7 @@ class CustomNoteitem extends StatelessWidget {
       child: Container(
         padding: EdgeInsets.all(25),
         decoration: BoxDecoration(
-          color: color ?? Color(0xffFFCD79),
+          color: Color(noteModel.color),
           borderRadius: BorderRadius.circular(12),
         ),
         child: Column(
@@ -24,15 +26,20 @@ class CustomNoteitem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  'Flutter Tips',
+                  noteModel.title,
                   style: TextStyle(fontSize: 24, color: AppColor.blackcolor),
                 ),
-                Icon(Icons.delete, size: 35, color: AppColor.blackcolor),
+                GestureDetector(
+                  onTap: () {
+                    noteModel.delete();
+                    context.read<NoteCubit>().fetchNotes();
+                  },
+                  child: Icon(Icons.delete, size: 35, color: AppColor.blackcolor)),
               ],
             ),
             Gap(18),
             Text(
-              'Build Your Craear with Ahmed Saeed',
+              noteModel.subtitle,
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
               style: TextStyle(
@@ -46,7 +53,7 @@ class CustomNoteitem extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Text(
-                  '${DateFormat('MMM dd,yyyy').format(DateTime.now())}',
+                  '${noteModel.date}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 15,

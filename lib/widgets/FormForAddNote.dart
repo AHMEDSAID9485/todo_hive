@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+import 'package:intl/intl.dart';
 import 'package:todo_hive/core/constant/App_color.dart';
 import 'package:todo_hive/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:todo_hive/models/note_model.dart';
@@ -44,7 +45,7 @@ class _FormForAddNoteState extends State<FormForAddNote> {
             return CustomBottom(title: 'Add',onTap: (){
               if(formKey.currentState!.validate()){
                 formKey.currentState!.save();
-                NoteModel note = NoteModel(title: title!, subtitle: subtitle!, date: DateTime.now().toString(), color: Colors.blue.value);
+                NoteModel note = NoteModel(title: title!, subtitle: subtitle!, date: DateFormat('MMMM d, yyyy').format(DateTime.now()), color: Colors.blue.value);
                 BlocProvider.of<AddNoteCubit>(context).addNote(note);
               }
             },isLoading: state is AddNoteLoading ? true : false,);

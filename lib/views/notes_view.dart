@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:todo_hive/core/constant/App_color.dart';
-import 'package:todo_hive/cubits/notes_cubit/note_cubit.dart';
+
 import 'package:todo_hive/widgets/AddNoteBottemSheet.dart';
 import 'package:todo_hive/widgets/CustomBodyForNotesview.dart';
 
@@ -11,10 +11,7 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocProvider(
-        create: (context) => NoteCubit(),
-        child: CustomBodyForNotesview(),
-      ),
+      body: CustomBodyForNotesview(),
       floatingActionButton: FloatingActionButton(
         shape: CircleBorder(),
         backgroundColor: AppColor.primcolor,
@@ -22,6 +19,7 @@ class NotesView extends StatelessWidget {
         onPressed: () {
           showModalBottomSheet(
             context: context,
+            isScrollControlled: true,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
             ),

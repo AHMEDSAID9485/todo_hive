@@ -1,3 +1,5 @@
+
+
 import 'package:bloc/bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:meta/meta.dart';
@@ -7,14 +9,10 @@ part 'note_state.dart';
 
 class NoteCubit extends Cubit<NoteState> {
   NoteCubit() : super(NoteInitial());
-
+  List<NoteModel>? notes = [];
   Future<void> fetchNotes() async {
-    try {
-      final notesBox = await Hive.openBox<NoteModel>('notes_box');
-      final notes = notesBox.values.toList();
-      emit(NoteSuccess(notes));
-    } catch (e) {
-      emit(NoteFailure(e.toString()));
-    }
+    final notesBox = await Hive.openBox<NoteModel>('notes_box');
+    notes = notesBox.values.toList();
+    emit(Notefitched());
   }
 }
