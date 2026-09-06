@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 
 import 'package:todo_hive/models/note_model.dart';
+import 'package:todo_hive/note_bloc_observer.dart';
 import 'package:todo_hive/views/notes_view.dart';
 
 void main() async {
-  
+  Bloc.observer = NoteBlocObserver();
   await Hive.initFlutter();
     Hive.registerAdapter<NoteModel>(NoteModelAdapter());
     await Hive.openBox<NoteModel>('notes_box');
