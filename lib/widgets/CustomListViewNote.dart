@@ -25,7 +25,7 @@ class CustomListViewNote extends StatelessWidget {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => EditNoteView()),
+                    MaterialPageRoute(builder: (context) => EditNoteView(noteModel: notes[index],)),
                   );
                 },
               );

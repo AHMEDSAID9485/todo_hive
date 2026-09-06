@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:todo_hive/core/constant/App_color.dart';
 
 class CustomTextField extends StatelessWidget {
-  const CustomTextField({super.key, required this.hint, this.maxlines = 1, this.onSaved});
+  const CustomTextField({super.key, required this.hint, this.maxlines = 1, this.onSaved, this.onChanged});
   final String hint;
   final int? maxlines;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -16,7 +17,9 @@ class CustomTextField extends StatelessWidget {
         }else{
           return null;
         }
+        
       },
+      onChanged: onChanged,
       decoration: InputDecoration(
         border: makeborder(AppColor.primcolor),
        // errorStyle: TextStyle(color: AppColor.redcolor,fontSize: 18),
