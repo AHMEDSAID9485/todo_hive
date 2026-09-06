@@ -1,7 +1,10 @@
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:todo_hive/core/constant/App_color.dart';
+import 'package:todo_hive/cubits/add_note_cubit/add_note_cubit.dart';
+import 'package:todo_hive/models/note_model.dart';
 import 'package:todo_hive/widgets/CustomBottom.dart';
 import 'package:todo_hive/widgets/CustomTextField.dart';
 
@@ -39,8 +42,8 @@ class _FormForAddNoteState extends State<FormForAddNote> {
           CustomBottom(title: 'ADD',onTap: () {
             if(formKey.currentState!.validate()){
               formKey.currentState!.save();
-              print('Title: $title');
-              print('Content: $subtitle');
+              var note = NoteModel(title: title!, subtitle: subtitle!, date: DateTime.now().toString(), color: Colors.amber.value); 
+              context.read<AddNoteCubit>().addNote(note);
             }
           },)
         ],
