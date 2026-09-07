@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:todo_hive/core/constant/App_color.dart';
+import 'package:todo_hive/cubits/add_note_cubit/add_note_cubit.dart';
 
 class ItemColor extends StatelessWidget {
   const ItemColor({super.key, required this.color, required this.isactive});
@@ -23,11 +25,11 @@ class CustomListColors extends StatefulWidget {
 
 class _CustomListColorsState extends State<CustomListColors> {
   final List<Color> Color_list = [
+    const Color(0xFFFDCB6E), 
     const Color(0xFF6C5CE7), // بنفسجي عصري
-    const Color(0xFF0984E3), // أزرق هادئ
+    const Color.fromARGB(255, 10, 149, 255), // أزرق هادئ
     const Color(0xFF00CEC9), // تيل / تركواز
     const Color(0xFF00B894), // أخضر نعناعي
-    const Color(0xFFFDCB6E), // أصفر دافئ
     const Color(0xFFE17055), // برتقالي مرجاني
     const Color(0xFFE84393), // وردي جذاب
   ];
@@ -44,6 +46,7 @@ class _CustomListColorsState extends State<CustomListColors> {
           return GestureDetector(
             onTap: () {
               currentIndex = index;
+              context.read<AddNoteCubit>().color = Color_list[currentIndex];
               setState(() {});
             },
             child: ItemColor(
