@@ -8,6 +8,7 @@ import 'package:todo_hive/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:todo_hive/models/note_model.dart';
 import 'package:todo_hive/widgets/CustomBottom.dart';
 import 'package:todo_hive/widgets/CustomTextField.dart';
+import 'package:todo_hive/widgets/Custom_list_Colors.dart';
 
 class FormForAddNote extends StatefulWidget {
   const FormForAddNote({
@@ -39,6 +40,8 @@ class _FormForAddNoteState extends State<FormForAddNote> {
            subtitle = value;
            // Handle saved value
          },),
+        const Gap(10),
+        CustomListColors(),
          const Gap(20),
          BlocBuilder<AddNoteCubit,AddNoteState>(
           builder: (context,state){
