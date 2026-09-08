@@ -9,36 +9,33 @@ class AddNoteBottemSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => AddNoteCubit(),
-      child: BlocConsumer<AddNoteCubit, AddNoteState>(
-        listener: (context, state) {
-          if (state is AddNoteSuccess) {
-             context.read<NoteCubit>().fetchNotes();
-            Navigator.pop(context);
-          } else if (state is AddNoteFailure) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(state.errMessage),
-                backgroundColor: Colors.red,
-              ),
-            );
-          }
-        },
-        builder: (context, state) {
-          return AbsorbPointer(
-            absorbing: state is AddNoteLoading ? true : false,
-            child: Padding(
-              padding: EdgeInsets.only(
-                left: 16,
-                right: 16,
-                bottom: MediaQuery.of(context).viewInsets.bottom + 16,
-              ),
-              child: SingleChildScrollView(child: FormForAddNote()),
+    return BlocConsumer<AddNoteCubit, AddNoteState>(
+      listener: (context, state) {
+        if (state is AddNoteSuccess) {
+           context.read<NoteCubit>().fetchNotes();
+          Navigator.pop(context);
+        } else if (state is AddNoteFailure) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: Text(state.errMessage),
+              backgroundColor: Colors.red,
             ),
           );
-        },
-      ),
+        }
+      },
+      builder: (context, state) {
+        return AbsorbPointer(
+          absorbing: state is AddNoteLoading ? true : false,
+          child: Padding(
+            padding: EdgeInsets.only(
+              left: 16,
+              right: 16,
+              bottom: MediaQuery.of(context).viewInsets.bottom + 16,
+            ),
+            child: SingleChildScrollView(child: FormForAddNote()),
+          ),
+        );
+      },
     );
   }
 }

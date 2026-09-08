@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+
 import 'package:todo_hive/cubits/notes_cubit/note_cubit.dart';
 import 'package:todo_hive/models/note_model.dart';
 import 'package:todo_hive/widgets/CustomAppBar.dart';
+import 'package:todo_hive/widgets/CustomEditListColors%20.dart';
 import 'package:todo_hive/widgets/CustomTextField.dart';
 import 'package:todo_hive/widgets/Custom_Icon.dart';
+
 
 class EditNoteViewbody extends StatefulWidget {
   const EditNoteViewbody({super.key, required this.noteModel});
@@ -26,6 +29,7 @@ class _EditNoteViewbodyState extends State<EditNoteViewbody> {
           CustomAppBar(text: 'Edit Note',widget: CustomIcon(iconData: Icons.check,onTap: () {
             widget.noteModel.title = title??widget.noteModel.title;
             widget.noteModel.subtitle = subtitle??widget.noteModel.subtitle;
+           
             widget.noteModel.save();
             context.read<NoteCubit>().fetchNotes();
             Navigator.pop(context);
@@ -37,7 +41,9 @@ class _EditNoteViewbodyState extends State<EditNoteViewbody> {
           Gap(15),
           CustomTextField(hint: 'Edit Content',maxlines: 5, onChanged: (value){
             subtitle = value;
-          },)
+          },),
+          Gap(10),
+          CustomEditListColors(noteModel: widget.noteModel),
         ],
       ),
     );
