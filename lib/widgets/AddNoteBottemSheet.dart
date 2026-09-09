@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_hive/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:todo_hive/cubits/notes_cubit/note_cubit.dart';
 import 'package:todo_hive/widgets/FormForAddNote.dart';
+import 'package:todo_hive/widgets/show_snack_bar.dart';
 
 class AddNoteBottemSheet extends StatelessWidget {
   const AddNoteBottemSheet({super.key});
@@ -12,14 +13,14 @@ class AddNoteBottemSheet extends StatelessWidget {
     return BlocConsumer<AddNoteCubit, AddNoteState>(
       listener: (context, state) {
         if (state is AddNoteSuccess) {
-           context.read<NoteCubit>().fetchNotes();
+          context.read<NoteCubit>().fetchNotes();
+          ScaffoldMessenger.of(context).showSnackBar(
+            show_snack_bar(message: 'Note added successfully'),
+          );
           Navigator.pop(context);
         } else if (state is AddNoteFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(state.errMessage),
-              backgroundColor: Colors.red,
-            ),
+            show_snack_bar(message: 'Failed to add note'),
           );
         }
       },
